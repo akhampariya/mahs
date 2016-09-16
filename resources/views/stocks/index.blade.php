@@ -27,7 +27,7 @@
                 <td>{{ $stock->shares }}</td>
                 <td>{{ $stock->purchase_price }}</td>
                 <td>{{ $stock->purchased }}</td>
-                <td><a href="{{url('stocks',$stock->id)}}" class="btn btn-primary">Read</a></td>
+                <td><a href="{{url('stocks',$stock->id)}}" class="btn btn-primary">View Summary</a></td>
                 <td><a href="{{route('stocks.edit',$stock->id)}}" class="btn btn-warning">Update</a></td>
                 <td>
                     {!! Form::open(['method' => 'DELETE', 'route'=>['stocks.destroy', $stock->id]]) !!}

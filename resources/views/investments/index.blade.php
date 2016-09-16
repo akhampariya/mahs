@@ -29,7 +29,7 @@
                 <td>{{$investment->Acquired_Date}}</td>
                 <td>{{$investment->Recent_Value}}</td>
                 <td>{{$investment->Recent_Date}}</td>
-                <td><a href="{{url('investments',$investment->id)}}" class="btn btn-primary">Read</a></td>
+                <td><a href="{{url('investments',$investment->id)}}" class="btn btn-primary">View Summary</a></td>
                 <td><a href="{{route('investments.edit',$investment->id)}}" class="btn btn-warning">Update</a></td>
                 <td>
                     {!! Form::open(['method' => 'DELETE', 'route'=>['investments.destroy', $investment->id] ])!!}
