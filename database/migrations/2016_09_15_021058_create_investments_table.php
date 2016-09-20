@@ -14,6 +14,7 @@ class CreateInvestmentsTable extends Migration
     {
 
         Schema::create('investments', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('category');
             $table->string('description');
