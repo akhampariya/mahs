@@ -41,65 +41,141 @@
 
 
             </tbody>
-        </table>
+      </table>
     </div>
-    <div>
-        <hr>
-        <h1>Stocks</h1>
-    <table class="table table-striped table-bordered table-hover">
-        <thead>
-        <tr class="bg-info">
-            <th>Symbol</th>
-            <th>Name</th>
-            <th>Shares</th>
-            <th>Purchase price</th>
-            <th>Purchase Date</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach ($stocks as $stock)
-            <tr>
+
+
+            <?php
+    $stockprice=null;
+    $stotal = 0;
+    $svalue=0;
+    $itotal = 0;
+    $ivalue=0;
+    $iportfolio = 0;
+    $cportfolio = 0;
+    ?>
+    <br>
+    <h2>Stocks </h2>
+    <div class="container">
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+            <tr class="bg-info">
+                <th> Symbol </th>
+                <th>Stock Name</th>
+                <th>No. of Shares</th>
+                <th>Purchase Price</th>
+                <th>Purchase Date</th>
+                <th>Original Value</th>
+                <th>Current Price</th>
+                <th>Current Value</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+
+
+
+        @foreach($customer->stocks as $stock)
+                <tr>
                 <td>{{ $stock->symbol }}</td>
                 <td>{{ $stock->name }}</td>
                 <td>{{ $stock->shares }}</td>
                 <td>{{ $stock->purchase_price }}</td>
                 <td>{{ $stock->purchased }}</td>
-            </tr>
+                <td> <?php echo '$', $stock['shares'] * $stock['purchase_price'];
+                    $stotal = $stotal + $stock['shares'] * $stock['purchase_price']?>
+                </td>
+                <?php
+                    $URL = "http://www.google.com/finance/info?q=NSE:" . $stock['symbol'];
+                    $file = fopen("$URL", "r");
+                    $r = "";
+                    do {
+                    $data = fread($file, 500);
+                    $r .= $data;
+                    } while (strlen($data) != 0);
+                    //Remove CR's from ouput - make it one line
+                    $json = str_replace("\n", "", $r);
+
+                    //Remove //, [ and ] to build qualified string
+                    $data = substr($json, 4, strlen($json) - 5);
+
+                    //decode JSON data
+                    $json_output = json_decode($data, true);
+                    //echo $sstring, "<br>   ";
+                    $price = "\n" . $json_output['l'];
+
+
+                 ?>
+                    <td> <?php echo '$', $price ?>  </td>
+                    <td> <?php echo '$', $stock['shares'] * $price;
+                        $svalue = $svalue + ($stock['shares'] * $price)
+                        ?>  </td>
+
+                </tr>
+
         @endforeach
-    </tbody>
-    </table>
+
+          </tbody>
+        </table>
+
+    <h3>
+        <?php echo 'Total of Initial Stock Portfolio $' , number_format ($stotal,2); ?>
+        <br>
+        <?php echo 'Total of Current Stock Portfolio $', number_format ($svalue,2) ?>
+    </h3>
     </div>
-    <div>
-        <hr>
-        <h1>Investments</h1>
+
+    <br>
+    <h2>Investments </h2>
+    <div class="container">
         <table class="table table-striped table-bordered table-hover">
-            <thread>
+            <thead>
             <tr class="bg-info">
-                <th>Cust No</th>
-                <th>Cust Name</th>
-                <th>Category</th>
+                <th> Category </th>
                 <th>Description</th>
                 <th>Acquired Value</th>
                 <th>Acquired Date</th>
                 <th>Recent Value</th>
                 <th>Recent Date</th>
+
             </tr>
-            </thread>
+            </thead>
+
             <tbody>
-            @foreach($investments as $investment)
+
+
+
+
+            @foreach($customer->investments as $investment)
                 <tr>
-                    <td>{{$investment->customer->cust_number }}</td>
-                    <td>{{$investment->customer->name }}</td>
-                    <td>{{$investment->category}}</td>
-                    <td>{{$investment->description}}</td>
-                    <td>{{$investment->Acquired_Value}}</td>
-                    <td>{{$investment->Acquired_Date}}</td>
-                    <td>{{$investment->Recent_Value}}</td>
-                    <td>{{$investment->Recent_Date}}</td>
+                    <td>{{ $investment->category }}</td>
+                    <td>{{ $investment->description }}</td>
+                    <td>{{ $investment->Acquired_Value }}</td>
+                    <td>{{ $investment->Acquired_Date }}</td>
+                    <td>{{ $investment->Recent_Value }}</td>
+                    <td>{{ $investment->Recent_Date }}</td>
+                    <?php $itotal = $itotal + $investment['Acquired_Value']?>
+                    <?php $ivalue = $ivalue + $investment['Recent_Value'] ?>
                 </tr>
+
             @endforeach
 
             </tbody>
         </table>
+        <h3>
+        <?php echo 'Total of Initial Investment Portfolio $', number_format($itotal,2); ?>
+        <br>
+        <?php echo 'Total of Current Investment Portfolio $', number_format($ivalue,2); ?>
+        </h3>
+        <br>
+        <h2>Summary of Portfolio </h2>
+        <h3>
+        <?php $iportfolio = $stotal + $itotal;?>
+        <?php echo 'Total of Initial Portfolio Value $', number_format($iportfolio,2); ?>        <br>
+        <?php $cportfolio = $svalue + $ivalue;?>
+        <?php echo 'Total of Current Investment Portfolio $', number_format($cportfolio,2) ?>
+        </h3>
     </div>
+
 @stop
