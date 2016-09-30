@@ -8,32 +8,48 @@ use App\Http\Requests;
 use App\Customer;
 use App\Stock;
 use App\Investment;
+use Auth;
 
 class CustomerController extends Controller
 {
-    public function __construct()
+    /*public function __construct()
     {
         $this->middleware('auth');
-    }
+    }*/
     public function index()
     {
         //
-        $customers=Customer::all();
-        return view('customers.index',compact('customers'));
+        if(Auth::check()) {
+            $customers = Customer::all();
+            return view('customers.index', compact('customers'));
+        }
+        else{
+            return redirect('/');
+        }
     }
 
     public function show($id)
     {
+        if(Auth::check()) {
         $customer = Customer::findOrFail($id);
         $stocks= Stock::where('customer_id', $id)->get();
         $investments= Investment::where('customer_id',$id)->get();
         return view('customers.show',compact('customer','stocks','investments'));
+        }
+        else{
+            return redirect('/');
+        }
     }
 
 
     public function create()
     {
-        return view('customers.create');
+        if(Auth::check()) {
+            return view('customers.create');
+        }
+        else{
+                return redirect('/');
+            }
     }
 
     /**
@@ -43,15 +59,27 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        $customer= new Customer($request->all());
-        $customer->save();
-        return redirect('customers');
+        if(Auth::check()) {
+            $customer = new Customer($request->all());
+            $customer->save();
+            return redirect('customers');
+        }
+        else{
+                return redirect('/');
+            }
     }
 
     public function edit($id)
     {
-        $customer=Customer::find($id);
+        if(Auth::check()) {
+            $customer=Customer::find($id);
+
         return view('customers.edit',compact('customer'));
+        }
+        else{
+                return redirect('/');
+            }
+
     }
 
     /**
@@ -62,17 +90,27 @@ class CustomerController extends Controller
      */
     public function update($id,Request $request)
     {
-        //
-        $customer= new Customer($request->all());
-        $customer=Customer::find($id);
-        $customer->update($request->all());
-        return redirect('customers');
+        if(Auth::check()) {
+            //
+            $customer = new Customer($request->all());
+            $customer = Customer::find($id);
+            $customer->update($request->all());
+            return redirect('customers');
+        }
+        else{
+            return redirect('/');
+        }
     }
 
     public function destroy($id)
     {
-        Customer::find($id)->delete();
-        return redirect('customers');
+        if(Auth::check()) {
+            Customer::find($id)->delete();
+            return redirect('customers');
+        }
+        else{
+            return redirect('/');
+        }
     }
 
     public function stringify($id)
