@@ -4,7 +4,7 @@
         <!DOCTYPE html>
 <html>
 <head>
-    <title>Wu Tang Financial™</title>
+    <title>Mercy Affordable Housing Property Management</title>
 
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
@@ -20,6 +20,9 @@
             display: table;
             font-weight: 100;
             font-family: 'Lato';
+            background-image: url(http://www.greccio.org/site/wp-content/uploads/2016/02/Greccio-background-without-Family-grass-stretched-for-website.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         .container {
@@ -38,15 +41,15 @@
         }
     </style>
 </head>
-<body background="http://financeblog.herokuapp.com/saya.png">
+
 <div class="container">
     <div class="content">
-        <div class="title">Wu Tang Financial™</div>
+        <div class="title">Mercy Affordable Housing Property Management</div>
     </div>
     <hr>
-    <a href="http://financeblog.herokuapp.com/">Home Page</a> |
+    <!--<a href="http://financeblog.herokuapp.com/">Home Page</a> |
     <a href="{{ action('CustomerController@index') }}">Customers</a> |
     <a href="{{ action('StockController@index') }}">Stocks</a> |
-    <a href="{{ action('InvestmentController@index') }}">Investments</a>
+    <a href="{{ action('InvestmentController@index') }}">Investments</a>-->
 </div>
 @endsection
