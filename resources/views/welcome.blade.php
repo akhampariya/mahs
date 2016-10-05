@@ -44,7 +44,9 @@
 
 <div class="container">
     <div class="content">
-        <div class="title">Mercy Affordable Housing Property Management</div>
+        <div style="color:purple">
+            <div style="font-weight: bolder">
+        <div class="title" align="left" font-size="80">Mercy Affordable Housing Property Management</div>
     </div>
     <hr>
     <!--<a href="http://financeblog.herokuapp.com/">Home Page</a> |
