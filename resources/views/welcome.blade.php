@@ -1,57 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-        <!DOCTYPE html>
-<html>
-<head>
-    <title>Mercy Affordable Housing Property Management</title>
-
-    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
-    <style>
-        html, body {
-            height: 100%;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            display: table;
-            font-weight: 100;
-            font-family: 'Lato';
-            background-image: url(http://www.greccio.org/site/wp-content/uploads/2016/02/Greccio-background-without-Family-grass-stretched-for-website.jpg);
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
-        .container {
-            text-align: center;
-            display: table-cell;
-            vertical-align: middle;
-        }
-
-        .content {
-            text-align: center;
-            display: inline-block;
-        }
-
-        .title {
-            font-size: 96px;
-        }
-    </style>
-</head>
-
 <div class="container">
-    <div class="content">
-        <div style="color:purple">
-            <div style="font-weight: bolder">
-        <div class="title" align="left" font-size="80">Mercy Affordable Housing Property Management</div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading">Welcome to MAH</div>
+                <div style="text-align: center;"><img src="images/UNO-Mav.png"></div>
+                <div class="panel-body">
+                    Application description to be filled.
+                </div>
+            </div>
+        </div>
     </div>
-    <hr>
-    <!--<a href="http://financeblog.herokuapp.com/">Home Page</a> |
-    <a href="{{ action('CustomerController@index') }}">Customers</a> |
-    <a href="{{ action('StockController@index') }}">Stocks</a> |
-    <a href="{{ action('InvestmentController@index') }}">Investments</a>-->
 </div>
 @endsection

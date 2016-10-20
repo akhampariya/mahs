@@ -7,8 +7,9 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
-        "laravelcollective/html": "5.2.*",
-        "google/apiclient": "1.0.*@beta"
+        "doctrine/dbal": "^2.5",
+        "laravelcollective/html": "^5.2",
+        "zizaco/entrust": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

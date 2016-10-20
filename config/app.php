@@ -108,7 +108,7 @@ return [
     |
     */
 
-    'log' => env('APP_LOG', 'single'),
+    'log' => env('APP_LOG', 'daily'),
 
     /*
     |--------------------------------------------------------------------------
@@ -155,6 +155,15 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        /*
+         * Entrust Service Provider
+         */
+        Zizaco\Entrust\EntrustServiceProvider::class,
+
+        /*
+         * LaravelCollective Html Form & Html
+         */
         Collective\Html\HtmlServiceProvider::class,
 
     ],
@@ -202,8 +211,17 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Form' => Collective\Html\FormFacade::class,
-        'Html' => Collective\Html\HtmlFacade::class,
+
+        /*
+         * Entrust alias
+         */
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+
+        /*
+         * LaravelCollective Html Form & Html
+         */
+        'Form'      => Collective\Html\FormFacade::class,
+        'Html'      => Collective\Html\HtmlFacade::class,
 
     ],
 
