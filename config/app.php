@@ -147,6 +147,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+		
+
 
         /*
          * Application Service Providers...
@@ -216,7 +218,8 @@ return [
          * Entrust alias
          */
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
-
+		'Theme' => 'Cartalyst\Themes\Laravel\Facades\Theme',
+		'Asset' => 'Cartalyst\Themes\Laravel\Facades\Asset',
         /*
          * LaravelCollective Html Form & Html
          */
