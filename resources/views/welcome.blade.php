@@ -9,7 +9,7 @@
                 <div style="text-align: center;"><img src="images/MAHLOGO.png"></div> 
                 <div class="panel-body">
                 <!-- <div style="text-align: center;"><img src="images/UNO-Mav.png"></div> -->
-                .
+                
 				</div>
             </div>
         </div>
