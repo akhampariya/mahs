@@ -12,9 +12,9 @@
 
             <!-- Branding Image -->
             {{--<a class="navbar-brand" href="{{ url('/') }}">Laravel</a>--}}
-            <!--<div class="pull-left"><img src="images/UNO-icon-color.png" style="height: 48px;"></div>
-         -->   <a class="navbar-brand" href="{{ url('/') }}">
-                MAH
+            <div class="pull-left"><img src="images/MAHNav.png" style="height: 48px;"></div>
+            <a class="navbar-brand" href="{{ url('/') }}">
+                Mercy Affordable Housing Inc.
             </a>
 
         </div>
@@ -25,7 +25,8 @@
             <ul class="nav navbar-nav">
                 <li><a href="{{ url('/home') }}">Home</a></li>
                 {{-- Menu for Users with Administration Role Only --}}
-                @role('admin')
+                <!-- See below for role based menu -->
+				@role('admin')
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                         <i class="fa fa-btn fa-fw fa-cogs"></i>Administration<span class="caret"></span></a>
@@ -37,6 +38,7 @@
                     </ul>
                 </li>
                 @endrole
+				<!-- end of role based menu -->
             </ul>
             @endif
 

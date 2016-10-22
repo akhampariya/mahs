@@ -5,11 +5,12 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Welcome to MAH</div>
-                <!-- <div style="text-align: center;"><img src="images/UNO-Mav.png"></div> -->
+                <div class="panel-heading">Welcome to Mercy Affordable Housing Inc.</div>
+                <div style="text-align: center;"><img src="images/MAHLOGO.png"></div> -->
                 <div class="panel-body">
-                    <h2> Application description to be filled.</h2>
-                </div>
+                <!-- <div style="text-align: center;"><img src="images/UNO-Mav.png"></div> -->
+                .
+				</div>
             </div>
         </div>
     </div>
