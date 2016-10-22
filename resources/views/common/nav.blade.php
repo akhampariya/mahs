@@ -38,6 +38,18 @@
                     </ul>
                 </li>
                 @endrole
+				@role('Prop Mgr')
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <i class="fa fa-btn fa-fw fa-cogs"></i>Work Orders<span class="caret"></span></a>
+                    <ul class="dropdown-menu multi level" role="menu">
+                        <li><a href="{{ url('/workorder') }}"><i class="fa fa-btn fa-fw fa-user"></i>Tickets</a></li>
+                       <!-- <li><a href="{{ url('/roles') }}"><i class="fa fa-btn fa-fw fa-users"></i>Roles</a></li> -->
+                        {{--<li class="divider"></li>--}}
+                        {{--<li><a href="{{ url('/files') }}"><i class="fa fa-btn fa-fw fa-file"></i>Files</a></li>--}}
+                    </ul>
+                </li>
+                @endrole
 				<!-- end of role based menu -->
             </ul>
             @endif
