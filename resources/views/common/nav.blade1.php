@@ -16,7 +16,7 @@
             <a class="navbar-brand" href="{{ url('/') }}">
                 Mercy Affordable Housing Inc.
             </a>
-			
+
         </div>
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -25,7 +25,8 @@
             <ul class="nav navbar-nav">
                 <li><a href="{{ url('/home') }}">Home</a></li>
                 {{-- Menu for Users with Administration Role Only --}}
-                @role('admin')
+                <!-- See below for role based menu -->
+				@role('admin')
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                         <i class="fa fa-btn fa-fw fa-cogs"></i>Administration<span class="caret"></span></a>
@@ -37,20 +38,41 @@
                     </ul>
                 </li>
                 @endrole
-				@role('pmanager')
+				@role('Prop Mgr')
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        <i class="fa fa-btn fa-fw fa-cogs"></i>Administration<span class="caret"></span></a>
+                        <i class="fa fa-btn fa-fw fa-cogs"></i>Work Orders<span class="caret"></span></a>
                     <ul class="dropdown-menu multi level" role="menu">
-                        {{--<li><a href="{{ url('/users') }}"><i class="fa fa-btn fa-fw fa-user"></i>Users</a></li> --}}
-                        {{--<li><a href="{{ url('/roles') }}"><i class="fa fa-btn fa-fw fa-users"></i>Roles</a></li>--}}
+                        <li><a href="{{ url('/workorder') }}"><i class="fa fa-btn fa-fw fa-user"></i>Tickets</a></li>
+                       <!-- <li><a href="{{ url('/roles') }}"><i class="fa fa-btn fa-fw fa-users"></i>Roles</a></li> -->
                         {{--<li class="divider"></li>--}}
                         {{--<li><a href="{{ url('/files') }}"><i class="fa fa-btn fa-fw fa-file"></i>Files</a></li>--}}
                     </ul>
                 </li>
                 @endrole
-				
+				@role('Business Mgr')
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <i class="fa fa-btn fa-fw fa-cogs"></i>Work Orders<span class="caret"></span></a>
+                    <ul class="dropdown-menu multi level" role="menu">
+                        <li><a href="{{ url('/workorder') }}"><i class="fa fa-btn fa-fw fa-user"></i>Tickets</a></li>
+                       <!-- <li><a href="{{ url('/roles') }}"><i class="fa fa-btn fa-fw fa-users"></i>Roles</a></li> -->
+                        {{--<li class="divider"></li>--}}
+                        {{--<li><a href="{{ url('/files') }}"><i class="fa fa-btn fa-fw fa-file"></i>Files</a></li>--}}
+                    </ul>
+                </li>
+                @endrole
+				@role('')
+                       <!-- <li><a href="{{ url('/roles') }}"><i class="fa fa-btn fa-fw fa-users"></i>Roles</a></li> -->
+                        {{--<li class="divider"></li>--}}
+                        {{--<li><a href="{{ url('/files') }}"><i class="fa fa-btn fa-fw fa-file"></i>Files</a></li>--}}
+                    </ul>
+                </li>
+                @endrole
+				<!-- end of role based menu -->
             </ul>
+			
+			
             @endif
 
             <!-- Right Side Of Navbar -->

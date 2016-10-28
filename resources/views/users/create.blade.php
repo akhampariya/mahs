@@ -11,9 +11,9 @@
                         {!! Form::open(['url' => 'users', 'class' => 'form-horizontal']) !!}
                         @include('common.errors')
                         @include('common.flash')
-
-                        @include ('users.partial', ['CRUD_Action' => 'Create'])
-                        {!! Form::close() !!}
+						@include ('users.partial', ['CRUD_Action' => 'Create'])
+                       
+                         {!! Form::close() !!}
                     </div>
                 </div>
             </div>

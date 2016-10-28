@@ -10,16 +10,16 @@ class UsersTableSeeder extends Seeder {
     public function run()
     {
         DB::table('users')->delete();
-        User::create([  'name' => 'Admin', 'password' => bcrypt('secret'), 'email' => 'akhampariya@unomaha.edu', 'active' => true,
+        User::create([  'name' => 'Administrator', 'password' => bcrypt('secret'), 'email' => 'ajaykhampariya14@gmail.com', 'active' => true,
             'created_by' => 'System', 'updated_by' => 'System', 'created_at' => date_create(), 'updated_at' => date_create()]);
-        User::create([  'name' => 'Prop Mgr', 'password' => bcrypt('secret'), 'email' => 'aabid@unomaha.edu', 'active' => true,
+        User::create([  'name' => 'AJ', 'password' => bcrypt('secret'), 'email' => 'akhampariya@unomaha.edu', 'active' => true,
             'created_by' => 'System', 'updated_by' => 'System', 'created_at' => date_create(), 'updated_at' => date_create()]);
-        User::create([  'name' => 'Business Mgr', 'password' => bcrypt('secret'), 'email' => 'ealba@unomaha.edu', 'active' => true,
+        User::create([  'name' => 'Ammar Abid', 'password' => bcrypt('secret'), 'email' => 'aabid@unomaha.edu', 'active' => true,
             'created_by' => 'System', 'updated_by' => 'System', 'created_at' => date_create(), 'updated_at' => date_create()]);
-        //User::create([  'name' => 'Quinn Nelson', 'password' => bcrypt('secret'), 'email' => 'qnelson@unomaha.edu', 'active' => true,
-        //    'created_by' => 'System', 'updated_by' => 'System', 'created_at' => date_create(), 'updated_at' => date_create()]);
-        //User::create([  'name' => 'Donald Steffensmeier', 'password' => bcrypt('secret'), 'email' => 'djsteffy@unomaha.edu', 'active' => true,
-        //    'created_by' => 'System', 'updated_by' => 'System', 'created_at' => date_create(), 'updated_at' => date_create()]);
+        User::create([  'name' => 'Javier Alba', 'password' => bcrypt('secret'), 'email' => 'ealba@unomaha.edu', 'active' => true,
+            'created_by' => 'System', 'updated_by' => 'System', 'created_at' => date_create(), 'updated_at' => date_create()]);
+        User::create([  'name' => 'Shanshan Huang', 'password' => bcrypt('secret'), 'email' => 'shuang03@unomaha.edu', 'active' => true,
+            'created_by' => 'System', 'updated_by' => 'System', 'created_at' => date_create(), 'updated_at' => date_create()]);
     }
 }
 
@@ -28,18 +28,18 @@ class RolesTableSeeder extends Seeder {
     public function run()
     {
         DB::table('roles')->delete();
-        Role::create([ 'name' => 'admin', 'display_name' => 'Admin', 'description' => 'User is allowed to manage and edit other users',
+        Role::create([ 'name' => 'admin', 'display_name' => 'Administrator', 'description' => 'User is allowed to manage and edit other users',
             'created_by' => 'System', 'updated_by' => 'System', 'created_at' => date_create(), 'updated_at' => date_create()]);
-        Role::create([ 'name' => 'Prop Mgr', 'display_name' => 'Prop Mgr', 'description' => 'Property Manager to manage work orders.',
+        Role::create([ 'name' => 'pmanager', 'display_name' => 'Property Manager', 'description' => 'Property Manager is allowed to manage ...',
             'created_by' => 'System', 'updated_by' => 'System', 'created_at' => date_create(), 'updated_at' => date_create()]);
-        Role::create([ 'name' => 'Business Mgr', 'display_name' => 'Business Mgr', 'description' => 'Business Manager to fetch reports and view work orders.',
+        Role::create([ 'name' => 'bmanager', 'display_name' => 'Business Manager', 'description' => 'Business Manager is allowed to manage ...',
             'created_by' => 'System', 'updated_by' => 'System', 'created_at' => date_create(), 'updated_at' => date_create()]);
-		Role::create([ 'name' => 'Site User', 'display_name' => 'Site User', 'description' => '` is allowed to manage work ',
-			'created_by' => 'System', 'updated_by' => 'System', 'created_at' => date_create(), 'updated_at' => date_create()]);
-  //Role::create([ 'name' => 'student', 'display_name' => 'Student', 'description' => 'Student is allowed to manage ...',
-    //  'created_by' => 'System', 'updated_by' => 'System', 'created_at' => date_create(), 'updated_at' => date_create()]);
- // Role::create([ 'name' => 'intern', 'display_name' => 'Intern', 'description' => 'Intern is allowed Read access to ...',
-   //       'created_by' => 'System', 'updated_by' => 'System', 'created_at' => date_create(), 'updated_at' => date_create()]);
+        Role::create([ 'name' => 'staff', 'display_name' => 'Staff', 'description' => 'Staff is allowed to manage ...',
+            'created_by' => 'System', 'updated_by' => 'System', 'created_at' => date_create(), 'updated_at' => date_create()]);
+        Role::create([ 'name' => 'tenant', 'display_name' => 'Tenant', 'description' => 'Tenant is allowed to manage ...',
+            'created_by' => 'System', 'updated_by' => 'System', 'created_at' => date_create(), 'updated_at' => date_create()]);
+        Role::create([ 'name' => 'contractor', 'display_name' => 'Contractor', 'description' => 'Contractor is allowed Read access to ...',
+            'created_by' => 'System', 'updated_by' => 'System', 'created_at' => date_create(), 'updated_at' => date_create()]);
     }
 }
 
@@ -63,25 +63,30 @@ class RoleUserTableSeeder extends Seeder {
     {
         DB::table('role_user')->delete();
 
-        $user = User::where('name', '=', 'Admin')->first()->id;
+        $user = User::where('name', '=', 'Administrator')->first()->id;
         $role = Role::where('name', '=', 'admin')->first()->id;
         $role_user = [ ['role_id' => $role, 'user_id' => $user, 'created_by' => 'System', 'updated_by' => 'System', 'created_at' => date_create(), 'updated_at' => date_create() ] ];
         DB::table('role_user')->insert($role_user);
 
-        $user = User::where('name', '=', 'Prop Mgr')->first()->id;
-        $role = Role::where('name', '=', 'Prop Mgr')->first()->id;
+        $user = User::where('name', '=', 'AJ')->first()->id;
+        $role = Role::where('name', '=', 'admin')->first()->id;
         $role_user = [ ['role_id' => $role, 'user_id' => $user, 'created_by' => 'System', 'updated_by' => 'System', 'created_at' => date_create(), 'updated_at' => date_create() ] ];
         DB::table('role_user')->insert($role_user);
 
-        $user = User::where('name', '=', 'Business Mgr')->first()->id;
-        $role = Role::where('name', '=', 'Business Mgr')->first()->id;
+        $user = User::where('name', '=', 'Ammar Abid')->first()->id;
+        $role = Role::where('name', '=', 'admin')->first()->id;
         $role_user = [ ['role_id' => $role, 'user_id' => $user, 'created_by' => 'System', 'updated_by' => 'System', 'created_at' => date_create(), 'updated_at' => date_create() ] ];
         DB::table('role_user')->insert($role_user);
 
-     //   $user = User::where('name', '=', 'Site User')->first()->id;
-      //  $role = Role::where('name', '=', 'Site User')->first()->id;
-       // $role_user = [ 'role_id' => $role, 'user_id' => $user, 'created_by' => 'System', 'updated_by' => 'System', 'created_at' => date_create(), 'updated_at' => date_create()  ];
-        //DB::table('role_user')->insert($role_user);
+        $user = User::where('name', '=', 'Javier Alba')->first()->id;
+        $role = Role::where('name', '=', 'admin')->first()->id;
+        $role_user = [ ['role_id' => $role, 'user_id' => $user, 'created_by' => 'System', 'updated_by' => 'System', 'created_at' => date_create(), 'updated_at' => date_create() ] ];
+        DB::table('role_user')->insert($role_user);
+
+        $user = User::where('name', '=', 'Shanshan Huang')->first()->id;
+        $role = Role::where('name', '=', 'admin')->first()->id;
+        $role_user = [ 'role_id' => $role, 'user_id' => $user, 'created_by' => 'System', 'updated_by' => 'System', 'created_at' => date_create(), 'updated_at' => date_create()  ];
+        DB::table('role_user')->insert($role_user);
     }
 }
 
@@ -101,8 +106,10 @@ class UsersRolesPermissions extends Seeder
         $adminRole = Role::where('name', '=', 'admin')->first();
         $adminRole->attachPermissions(array($manageUsers, $manageRoles));
 
-      //  $studentRole = Role::where('name', '=', 'Site User')->first();
-       // $studentRole->attachPermissions(array($readonlyAll));
-    }
+     //   $studentRole = Role::where('name', '=', 'student')->first();
+     //   $studentRole->attachPermissions(array($readonlyAll));
+		$tenantRole = Role::where('name', '=', 'tenant')->first();
+		$tenantRole->attachPermissions(array($readonlyAll));
+	}
 }
 

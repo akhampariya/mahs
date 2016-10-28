@@ -42,8 +42,8 @@ class HomeController extends Controller
             $user = Auth::user();
             if ($user->hasRole('admin'))
                 return view('carousel', compact('user'));
-            elseif ($user->hasRole('student'))
-                return view('carousel', compact('user'));
+            //elseif ($user->hasRole('student'))
+            //    return view('carousel', compact('user'));
             else
                 return view('home', compact('user'));
         }
