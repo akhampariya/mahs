@@ -54,6 +54,8 @@ Route::get('laravel-version', function()
 
     Route::resource('users', 'UsersController');
     Route::resource('roles', 'RolesController');
+	// adding new table 
+	Route::resource('workorders', 'WorkOrderController');
 
 //    Route::delete('/comments/{comment}', 'CommentsController@destroy');
 //    Route::resource('comments', 'CommentsController');
@@ -63,3 +65,4 @@ Route::get('laravel-version', function()
 //        'uses' => 'CommentsController@addforplanofstudy']);
 
 //});
+
