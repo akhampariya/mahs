@@ -13,6 +13,7 @@
 		"laravelcollective/html": "^5.2",
 		"zizaco/entrust": "dev-master",
 		"sendgrid/sendgrid": "~5.0.9"
+
 	},
 	
 	"require-dev": {
