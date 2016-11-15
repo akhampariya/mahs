@@ -4,6 +4,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
+                <h1>Create Work Order</h1>
+                {!! Form::open(['url' =>'workorders']) !!}
+                <div class="rom-group">
+                    {!! Form::label('desc','Description:') !!}
+                    {!! Form::text('desc',null,['class'=>'from-control']) !!}
+                </div>
+
                 <div class="panel panel-default">
                     <div class="panel-heading"> {{ $heading }}</div>
 

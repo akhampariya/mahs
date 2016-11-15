@@ -36,6 +36,8 @@
                         {{--<li><a href="{{ url('/files') }}"><i class="fa fa-btn fa-fw fa-file"></i>Files</a></li>--}}
                     </ul>
                 </li>
+                {{-- work order link to the work ordrer page--}}
+                <li><a href="{{ action('WorkOrderController@index') }}">Work Order</a></li>
                 @endrole
 				@role('pmanager')
                 <li class="dropdown">
@@ -48,6 +50,8 @@
                         {{--<li><a href="{{ url('/files') }}"><i class="fa fa-btn fa-fw fa-file"></i>Files</a></li>--}}
                     </ul>
                 </li>
+                {{-- work order link to the work ordrer page--}}
+                <li><a href="{{ action('WorkOrderController@index') }}">Work Order</a></li>
                 @endrole
 				
             </ul>

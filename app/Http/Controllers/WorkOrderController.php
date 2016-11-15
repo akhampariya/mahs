@@ -28,6 +28,7 @@ class WorkOrderController extends Controller
     public function create()
     {
         //
+        return view ('workorders.create');
     }
 
     /**
@@ -38,6 +39,9 @@ class WorkOrderController extends Controller
     public function store()
     {
         //
+        $workorder=Request::all();
+        Workorder::create($workorder);
+        return redirect('workorders');
     }
 
     /**
@@ -49,6 +53,8 @@ class WorkOrderController extends Controller
     public function show($id)
     {
         //
+        $workorders = WorkOrder :: find($id);
+        return view ('workorders.show',compact('workorder'));
     }
 
     /**
@@ -60,6 +66,8 @@ class WorkOrderController extends Controller
     public function edit($id)
     {
         //
+        $workorder=Workorder::find($id);
+        return view('workorders.edit',compact('workorder'));
     }
 
     /**
@@ -71,6 +79,10 @@ class WorkOrderController extends Controller
     public function update($id)
     {
         //
+        $workorderUpdate=Request::all();
+        $workorder=Workorder::find($id);
+        $workorder->update($workorderUpdate);
+        return redirect('workorders');
     }
 
     /**
@@ -82,5 +94,7 @@ class WorkOrderController extends Controller
     public function destroy($id)
     {
         //
+        Workorder::fine($id)->delete();
+        return redirect('workorders');
     }
 }
