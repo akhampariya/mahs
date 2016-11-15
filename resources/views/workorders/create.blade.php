@@ -5,24 +5,41 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h1>Create Work Order</h1>
-                {!! Form::open(['url' =>'workorders']) !!}
-                <div class="rom-group">
-                    {!! Form::label('desc','Description:') !!}
-                    {!! Form::text('desc',null,['class'=>'from-control']) !!}
-                </div>
-
                 <div class="panel panel-default">
-                    <div class="panel-heading"> {{ $heading }}</div>
-
+                    <div class="panel-heading">Please enter information:</div>
+                    {!! Form::open(['url' =>'workorders']) !!}
+                    <div class="from-group">
+                        {!! Form::label('desc','Description:') !!}
+                        {!! Form::text('desc',null,['class'=>'from-control']) !!}
+                    </div>
+                    <div class="from-group">
+                        {!! Form::label('status','Status:') !!}
+                        {!! Form::text('status',null,['class'=>'from-control']) !!}
+                    </div>
+                    <div class="from-group">
+                        {!! Form::label('expecteddate','Expected Date:') !!}
+                        {!! Form::text('expecteddate',null,['class'=>'from-control']) !!}
+                    </div>
+                    <div class="from-group">
+                        {!! Form::label('estmtdcost','Expected Cost:') !!}
+                        {!! Form::text('estmtdcost',null,['class'=>'from-control']) !!}
+                    </div>
+                    <div class="from-group">
+                        {!! Form::label('actualdate','Actual Date:') !!}
+                        {!! Form::text('actualdate',null,['class'=>'from-control']) !!}
+                    </div>
+                    <div class="from-group">
+                        {!! Form::label('actualcost','Actual Cost:') !!}
+                        {!! Form::text('actualcost',null,['class'=>'from-control']) !!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::submit('Save',['class' => 'btn btn-primary form-control']) !!}
+                    </div>
                     <div class="panel-body">
-					{-- {!! Form::open(['url' => 'workorders', 'class' => 'form-horizontal']) !!}
+					 {!! Form::open(['url' => 'workorders', 'class' => 'form-horizontal']) !!}
                         @include('common.errors')
                         @include('common.flash')
-						@include ('workorders.partial', ['CRUD_Action' => 'Create'])
-                       
-                         {!! Form::close() !!} -- }
-						 <h1> work orders </h1>
-						 
+                         {!! Form::close() !!}
                     </div>
                 </div>
             </div>

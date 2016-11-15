@@ -38,9 +38,8 @@ class WorkOrderController extends Controller
      */
     public function store()
     {
-        //
         $workorder=Request::all();
-        Workorder::create($workorder);
+        $this->Workorder($workorder);
         return redirect('workorders');
     }
 
