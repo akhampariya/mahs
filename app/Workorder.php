@@ -14,5 +14,10 @@ class Workorder extends Model
 		'actualdate',
 		'actualcost',
             		];
-            
+
+
+    public function workorders() {
+        return $this->hasMany('App\Workorder');
+
+    }
 }

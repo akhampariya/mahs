@@ -12,7 +12,8 @@
 		"doctrine/dbal": "^2.5",
 		"laravelcollective/html": "^5.2",
 		"zizaco/entrust": "dev-master",
-		"sendgrid/sendgrid": "~5.0.9"
+		"sendgrid/sendgrid": "~5.0.9",
+		"barryvdh/laravel-debugbar": "^2.3"
 
 	},
 	
