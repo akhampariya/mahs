@@ -8,7 +8,7 @@
                 <div class="panel-heading" style="text-align: center;">Welcome {{$user->roles->first()->display_name}} - {{$user->name}}</div>
 
                 <div class="panel-body">
-                    <!-- Carousel
+                    <!-- <!-- Carousel
                     ================================================== -->
                     <div id="myCarousel" class="carousel slide"  data-ride="carousel">
                         <!-- Indicators -->
@@ -19,7 +19,7 @@
                         </ol> -->
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner" style="text-align: center;">
-                            <div class="item active" style="text-align: center;">
+                            <div class="item active" style="text-align: center;"> -->
 
 							<!--<a href="http://www.unomaha.edu/college-of-information-science-and-technology" target="_blank"> -->
                                 
