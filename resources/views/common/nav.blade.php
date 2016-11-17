@@ -37,7 +37,6 @@
                     </ul>
                 </li>
                 {{-- work order link to the work ordrer page--}}
-                <li><a href="{{ action('WorkOrderController@index') }}">Work Order</a></li>
                 @endrole
 				@role('pmanager')
                 <li class="dropdown">
@@ -51,10 +50,11 @@
                     </ul>
                 </li>
                 {{-- work order link to the work ordrer page--}}
-                <li><a href="{{ action('WorkOrderController@index') }}">Work Order</a></li>
                 @endrole
+                <li><a href="{{ action('WorkOrderController@index') }}">Work Order</a></li>
 				
             </ul>
+            
             @endif
 
             <!-- Right Side Of Navbar -->
