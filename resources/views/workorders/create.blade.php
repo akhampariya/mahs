@@ -37,9 +37,10 @@
                     </div>
                     <div class="panel-body">
 					 {!! Form::open(['url' => 'workorders', 'class' => 'form-horizontal']) !!}
-                        @include('common.errors')
-                        @include('common.flash')
-                         {!! Form::close() !!}
+                    {{-- This comment will not be in the rendered HTML
+ @include('common.errors')
+                        @include('common.flash')  --}}
+                          {!! Form::close() !!}
                     </div>
                 </div>
             </div>
@@ -47,7 +48,7 @@
     </div>
 @endsection
 
-@section('footer')
+{{-- @section('footer')
     <script>
         $(document).ready(function($) {
             $('select').select2();
@@ -65,6 +66,6 @@
             return rc;
         }
 
-    </script>
+    </script> --}}
 @endsection
 
