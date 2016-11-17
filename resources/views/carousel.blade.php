@@ -9,20 +9,20 @@
 
                 <div class="panel-body">
                     <!-- 
-		    <!-- Carousel
-                    ================================================== -->
+		    Carousel
+                    ==================================================
                     <div id="myCarousel" class="carousel slide"  data-ride="carousel">
                         <!-- Indicators -->
                         <!-- <ol class="carousel-indicators">
                             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                             <li data-target="#myCarousel" data-slide-to="1"></li>
                             <li data-target="#myCarousel" data-slide-to="2"></li>
-                        </ol> -->
-                        <!-- Wrapper for slides -->
+                        </ol>
+                        <!-- Wrapper for slides
                         <div class="carousel-inner" style="text-align: center;">
-                            <div class="item active" style="text-align: center;"> -->
+                            <div class="item active" style="text-align: center;">
 
-							<!--<a href="http://www.unomaha.edu/college-of-information-science-and-technology" target="_blank"> -->
+						<!--<a href="http://www.unomaha.edu/college-of-information-science-and-technology" target="_blank"> -->
                                 
 								<img src="http://mahsdev.herokuapp.com/images/MAHLOGO.png" class="img-responsive">
                                 
