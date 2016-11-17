@@ -24,6 +24,7 @@
     <style>
         body { font-family: 'Lato'; }
         .fa-btn { margin-right: 6px; }
+        img { width: auto ; max-width: 100% ;  height: auto ;}
     </style>
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 </head>
