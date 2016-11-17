@@ -23,7 +23,7 @@
 
 							<!--<a href="http://www.unomaha.edu/college-of-information-science-and-technology" target="_blank"> -->
                                 
-								<img src="/images/MAHLOGO.jpg" class="img-responsive">
+								<img src="http://mahsdev.herokuapp.com/images/MAHLOGO.png" class="img-responsive">
                                 
 								</a>
                             </div>
