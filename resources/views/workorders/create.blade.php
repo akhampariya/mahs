@@ -37,9 +37,9 @@
                     </div>
                     <div class="panel-body">
 					 {!! Form::open(['url' => 'workorders', 'class' => 'form-horizontal']) !!}
-                        @include('common.errors')
-                        @include('common.flash')
-                         {!! Form::close() !!}
+                    <!-- @include('common.errors')
+                        @include('common.flash') -->
+                          {!! Form::close() !!}
                     </div>
                 </div>
             </div>
