@@ -8,7 +8,8 @@
                 <div class="panel-heading" style="text-align: center;">Welcome {{$user->roles->first()->display_name}} - {{$user->name}}</div>
 
                 <div class="panel-body">
-                    <!-- <!-- Carousel
+                    <!-- 
+		    <!-- Carousel
                     ================================================== -->
                     <div id="myCarousel" class="carousel slide"  data-ride="carousel">
                         <!-- Indicators -->
