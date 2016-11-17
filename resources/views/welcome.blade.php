@@ -13,7 +13,7 @@
 
 	       
 <p><strong> Mercy Affordable Housing Inc.</strong> </p>
-      <p> Fsck !!! </p>
+      <p> We make housing affordable for every one </p>
 				</div>
             </div>
         </div>
