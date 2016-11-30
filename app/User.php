@@ -54,11 +54,17 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function workorders()
+    {
+        return $this->hasMany('App\Workorder');
+    }
+
     /**
      * Get a List of roles ids associated with the current user.
      *
      * @return array
      */
+    
     public function getRoleListAttribute()
     {
         return $this->roles->lists('id')->all();

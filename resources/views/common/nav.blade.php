@@ -11,10 +11,12 @@
             </button>
 
             <!-- Branding Image -->
-            {{--<a class="navbar-brand" href="{{ url('/') }}">Laravel</a>--}}
+           <!--  {{--<a class="navbar-brand" href="{{ url('/') }}">Laravel</a>--}}
+             -->
+            <a class="navbar-brand" href="{{ url('/') }}"> 
             <div class="pull-left"><img src="images/MAHNav.png" style="height: 48px;"></div>
-            <a class="navbar-brand" href="{{ url('/') }}">
-                Mercy Affordable Housing Inc.
+            
+            Mercy Affordable Housing Inc.
             </a>
 			
         </div>
@@ -37,7 +39,6 @@
                     </ul>
                 </li>
                 {{-- work order link to the work ordrer page--}}
-                <li><a href="{{ action('WorkOrderController@index') }}">Work Order</a></li>
                 @endrole
 				@role('pmanager')
                 <li class="dropdown">
@@ -51,10 +52,11 @@
                     </ul>
                 </li>
                 {{-- work order link to the work ordrer page--}}
-                <li><a href="{{ action('WorkOrderController@index') }}">Work Order</a></li>
                 @endrole
+                <li><a href="{{ action('WorkOrderController@index') }}">Work Order</a></li>
 				
             </ul>
+            
             @endif
 
             <!-- Right Side Of Navbar -->

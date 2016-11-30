@@ -13,7 +13,8 @@
 		"laravelcollective/html": "^5.2",
 		"zizaco/entrust": "dev-master",
 		"sendgrid/sendgrid": "~5.0.9",
-		"maatwebsite/excel": "~2.1.0"
+		"maatwebsite/excel": "~2.1.0",
+		"barryvdh/laravel-debugbar": "^2.3"
 	},
 	
 	"require-dev": {

@@ -4,14 +4,14 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard - Role based landing page</div>
+                <div class="panel-heading">Your Dashboard</div>
                 <div class="panel-body">
-                 You are logged in!
-                
-				
-				     @if (Auth::check())
-                    <!-- Left Side Of Navbar -->
-                @role('admin')
+                @if (Auth::check())
+              
+                <div> You are logged in {{ Auth::user()->name }} 
+                </div>	
+		            <!-- Left Side Of Navbar -->
+                <!-- @role('admin')
                 <h1> You are logged in admin <h2>
 				@endrole
 				@role('pmanager')
@@ -20,7 +20,8 @@
             @role('bmanager')
            <h1> You are logged in bmgr <h2>
 				@endrole
-            
+            --> @else
+            <div>You are logged in!</div>
 			@endif			
 				</div>
             </div>

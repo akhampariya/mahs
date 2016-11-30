@@ -26,7 +26,7 @@ class CreateWorkordersTable extends Migration
         });
 
         Schema::table('workorders', function (Blueprint $table) {
-           $table->foreign('tenant_id')>references('id')>on('users');
+           $table->foreign('tenant_id')->references('id')->on('users');
        });
 
     }

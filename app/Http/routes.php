@@ -56,3 +56,9 @@ Route::get('laravel-version', function()
     Route::resource('roles', 'RolesController');
 	// adding new table 
 	Route::resource('workorders', 'WorkOrderController');
+
+// Excel routes - 
+Route::get('import', 'ExcelController@import');
+Route::get('downloadExcel/{type}', 'ExcelController@downloadExcel');
+Route::post('importExcel', 'ExcelController@importExcel');
+// 

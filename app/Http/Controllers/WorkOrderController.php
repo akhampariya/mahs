@@ -5,8 +5,10 @@ use App\Http\Requests;
 use App\Http\Requests\UserRequest;
 use App\Workorder;
 use Auth;
+use App\User;
 //use Session;
-use Input;
+//use Input;
+use Illuminate\Support\Facades\Input;
 use DB;
 
 class WorkOrderController extends Controller
@@ -14,24 +16,10 @@ class WorkOrderController extends Controller
     public function __construct()
 
     {
-//   
-//        $this->middleware('administrator', ['only' => ['create', 'edit', 'destroy', 'update']]);
-//        $this->middleware('administrator');
-//        $this->middleware('role:admin|root');
-        
-//		$this->middleware('role:admin');
-
-//        $this->user = Auth::user();
-//        $this->users = User::all();
-//        $this->list_role = Role::lists('display_name', 'id');
-//        $this->heading = "Users";
-
-//        $this->viewData = [ 'user' => $this->user, 'users' => $this->users, 'list_role' => $this->list_role, 'heading' => $this->heading ];
   
 		  $this->workorder = Workorder::all();
 
-
-  }
+    }
 
 
     /**
@@ -43,7 +31,9 @@ class WorkOrderController extends Controller
     {
         if(Auth::check())
         {
+
         $workorders = Workorder::all();
+
         return view('workorders.index',compact('workorders'));
         }
         else
@@ -59,7 +49,20 @@ class WorkOrderController extends Controller
     public function create()
     {
         //
-        return view ('workorders.create');
+        // $users = User::whereIn('id',function ($b){
+        // $b->select('user_id')->from('role_user')->whereIn('role_id',function ($c){
+        //  $c->select('id')->from('roles')->whereIn('name',['admin','pmanager','bmanager']);
+        // });        
+        // })->pluck('name','id');
+
+     
+        $users = User::whereIn('id',function ($b){
+        $b->select('user_id')->from('role_user')->whereIn('role_id',function ($c){
+         $c->select('id')->from('roles')->where('name','tenant');
+        });        
+        })->pluck('name','id');
+
+        return view ('workorders.create', compact('users'));
     }
     /**
      * Store a newly created resource in storage.
@@ -76,7 +79,7 @@ class WorkOrderController extends Controller
 public function store(Request $request)
     {
         $this->validate($request,[
-            'desc'=>'required',
+        'desc'=>'required',
         'status'=>'required',
         'expecteddate'=>'required',
         'estmtdcost'=>'required',
@@ -87,6 +90,27 @@ public function store(Request $request)
        //  $input = $request->all();
        // // $this->populateCreateFields($input);
        //  $object = Workorder::create($input);
+
+        // rx1 - Get name of person who created this workorder
+
+        $email=Auth::user()->email;
+        $user=User::where('email',$email)->first();
+        $username= $user->name;
+
+        // rx1 end 
+
+        // rx2 - Get Tenant name from drop down list and save into database
+        $tid = Input::get('tenant_id');
+        
+        $workorders = WorkOrder::find($tid);
+        
+        $tname=User::where('id',$tid)->lists('name');
+        $tname=str_replace('["', '', $tname);
+        $tname=str_replace('"]', '', $tname);
+        // rx2 end 
+
+        $request['createdBy']=$username;
+        $request['tenantname']=$tname;
 
         $workorder=new workorder($request->all());
         $workorder->save();
@@ -104,7 +128,11 @@ public function store(Request $request)
     public function show($id)
     {
         $workorders = WorkOrder::find($id);
-        return view ('workorders.show',compact('workorders'));
+        $tenant_name=User::where('id',$workorders->tenant_id)->lists('name');
+        $tenant_name=str_replace('["', '', $tenant_name);
+        $tenant_name=str_replace('"]', '', $tenant_name);
+
+        return view ('workorders.show',compact('workorders','tenant_name'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -114,9 +142,14 @@ public function store(Request $request)
      */
     public function edit($id)
     {
-        //
+        $users = User::whereIn('id',function ($b){
+        $b->select('user_id')->from('role_user')->whereIn('role_id',function ($c){
+         $c->select('id')->from('roles')->where('name','tenant');
+        });        
+        })->pluck('name','id');
+
         $workorder=Workorder::find($id);
-        return view('workorders.edit',compact('workorder'));
+        return view('workorders.edit',compact('workorder','users'));
     }
     /**
      * Update the specified resource in storage.

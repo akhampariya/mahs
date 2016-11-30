@@ -2,11 +2,11 @@
 
 @section('content')
 
-    <div class="container">
+ <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
                 <h1>Create Work Order</h1>
-
                 @if (count($errors) > 0)
    <div class="alert alert-danger">
        <ul>
@@ -17,10 +17,18 @@
    </div>
 @endif
 
+            <div class="form-group">
+                <div class="table-responsive">
 
-                <div class="panel panel-default">
+
                     <div class="panel-heading">Please enter information:</div>
                     {!! Form::open(['url' =>'workorders']) !!}
+                    
+                    <div class="form-group">
+                                            {!! Form::label('tenant_id','Tenant name:') !!}
+                        {!! Form::select('tenant_id', $users) !!}
+                    </div>
+
                     <div class="from-group">
                         {!! Form::label('desc','Description:') !!}
                         {!! Form::text('desc',null,['class'=>'from-control']) !!}
