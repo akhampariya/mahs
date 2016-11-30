@@ -16,6 +16,8 @@ class CreateWorkordersTable extends Migration
         {
             $table->increments('id');
 			$table->string('desc');
+			$table->string('tenantname');
+			$table->string('createdBy')->default('Admin');;
 			$table->string('status');
 			$table->date('expecteddate');
 			$table->integer('estmtdcost');
