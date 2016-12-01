@@ -8,6 +8,7 @@ class Workorder extends Model
 {
  protected $fillable=[
         'tenantname',
+        'tenant_id',   
         'desc',
 		'status',
 		'expecteddate',

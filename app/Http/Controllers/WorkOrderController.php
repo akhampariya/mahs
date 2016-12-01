@@ -96,7 +96,7 @@ public function store(Request $request)
         $email=Auth::user()->email;
         $user=User::where('email',$email)->first();
         $username= $user->name;
-
+        //$tusrid= $user->id;
         // rx1 end 
 
         // rx2 - Get Tenant name from drop down list and save into database
@@ -111,6 +111,7 @@ public function store(Request $request)
 
         $request['createdBy']=$username;
         $request['tenantname']=$tname;
+        $request['tenant_id']=$tid;
 
         $workorder=new workorder($request->all());
         $workorder->save();

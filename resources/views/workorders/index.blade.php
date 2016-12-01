@@ -26,6 +26,7 @@
                                 <tr class="bg-info">
                                   <!--   <th>Id</th> -->
                                     <th>Tenant Name</th>
+                                    <!-- <th>Tenant ID</th> -->
                                     <th>Created By</th>
                                     <th>Description</th>
                                     <th>Status</th>
@@ -45,6 +46,7 @@
 
                                    <!--      <td class="table-text"><div><a href="{{url('workorders',$workorder->id)}}">{{ $workorder->id }}</a></div></td> -->
                                         <td class="table-text">{{ $workorder->tenantname}}</td>
+                                     <!--    <td class="table-text">{{ $workorder->tenant_id}}</td> -->
                                         <td class="table-text">{{ $workorder->createdBy }}</td>
                                         <td class="table-text"><a href="{{url('workorders',$workorder->id)}}">{{ $workorder->desc }}</a></td>
                                         <td class="table-text">{{ $workorder->status }}</td>
