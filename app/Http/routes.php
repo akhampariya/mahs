@@ -53,12 +53,23 @@ Route::get('laravel-version', function()
     Route::get('/home', 'HomeController@index');
 
     Route::resource('users', 'UsersController');
+
     Route::resource('roles', 'RolesController');
 	// adding new table 
 	Route::resource('workorders', 'WorkOrderController');
+    Route::resource('Property', 'PropertyController');
+   Route::resource('apartments', 'ApartmentController');
+    
 
 // Excel routes - 
 Route::get('import', 'ExcelController@import');
+Route::get('importx', 'ExcelController@importx');
+Route::get('importcus', 'ExcelController@importcus');
 Route::get('downloadExcel/{type}', 'ExcelController@downloadExcel');
+Route::get('aptrpt/{type}', 'ExcelController@aptrpt');
+Route::get('msgq/{type}', 'ExcelController@msgq');
 Route::post('importExcel', 'ExcelController@importExcel');
 // 
+Route::get('contact-us', 'ContactUSController@contactUS');
+Route::post('contact-us', ['as'=>'contactus.store','uses'=>'ContactUSController@contactUSPost']);
+Route::get('userrequests', 'ContactUSController@userrequests');

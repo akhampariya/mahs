@@ -17,9 +17,9 @@
                                 </tr></thead></table>
             {!! Form::model($workorder,['method' => 'PATCH','route'=>['workorders.update',$workorder->id]]) !!}
 
-        <div class="form-group">
+       <!--  <div class="form-group">
             {!! Form::select('tenant_id', $users) !!}            
-        </div>
+        </div> -->
         
         <div class="form-group">
         {!! Form::label('desc', 'Workorder Desc:') !!}

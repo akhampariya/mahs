@@ -19,13 +19,17 @@ class Workorder extends Model
             		];
 
 
-    // public function workorders() {
-    //     return $this->hasMany('App\Workorder');
+        public function property()
+        {
+        return $this->hasMany('App\Property');
+        }
 
-    // }
-
-        public function user() {
+        public function user() 
+        {
         return $this->belongsTo('App\User');
-
-    }
+        }
+       public function apartment() 
+        {
+        return $this->belongsTo('App\Apartment');
+        }
 }

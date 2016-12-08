@@ -24,6 +24,7 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             @if (Auth::check())
                     <!-- Left Side Of Navbar -->
+            
             <ul class="nav navbar-nav">
                 <li><a href="{{ url('/home') }}">Home</a></li>
                 {{-- Menu for Users with Administration Role Only --}}
@@ -53,8 +54,11 @@
                 </li>
                 {{-- work order link to the work ordrer page--}}
                 @endrole
+                <li><a href="{{ action('ApartmentController@index') }}">Apartments Info</a></li>
                 <li><a href="{{ action('WorkOrderController@index') }}">Work Order</a></li>
-				
+                 <li><a href="{{ action('PropertyController@index') }}">Property Info</a></li>
+                 <li><a href="{{ action('ContactUSController@userrequests') }}">User Msgs</a></li>
+				 
             </ul>
             
             @endif

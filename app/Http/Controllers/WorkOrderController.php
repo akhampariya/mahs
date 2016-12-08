@@ -4,7 +4,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\UserRequest;
 use App\Workorder;
+use App\Property;
 use Auth;
+use App\Apartment;
 use App\User;
 //use Session;
 //use Input;
@@ -33,6 +35,7 @@ class WorkOrderController extends Controller
         {
 
         $workorders = Workorder::all();
+    
 
         return view('workorders.index',compact('workorders'));
         }
@@ -55,7 +58,8 @@ class WorkOrderController extends Controller
         // });        
         // })->pluck('name','id');
 
-     
+     if(Auth::check())
+     {
         $users = User::whereIn('id',function ($b){
         $b->select('user_id')->from('role_user')->whereIn('role_id',function ($c){
          $c->select('id')->from('roles')->where('name','tenant');
@@ -63,8 +67,15 @@ class WorkOrderController extends Controller
         })->pluck('name','id');
 
         return view ('workorders.create', compact('users'));
+    
+        }
+        else
+        {
+           return view('welcome'); 
+        }
+
     }
-    /**
+    /**if(Auth::check()){
      * Store a newly created resource in storage.
      *
      * @return Response
@@ -128,12 +139,38 @@ public function store(Request $request)
      */
     public function show($id)
     {
+       if(Auth::check())
+        {
+
         $workorders = WorkOrder::find($id);
         $tenant_name=User::where('id',$workorders->tenant_id)->lists('name');
         $tenant_name=str_replace('["', '', $tenant_name);
         $tenant_name=str_replace('"]', '', $tenant_name);
 
-        return view ('workorders.show',compact('workorders','tenant_name'));
+        $Property=Property::where('apt_no',$id)->lists('property_name');
+        $Property=str_replace('"', '', $Property);    
+        $Property=str_replace(']', '', $Property);  
+
+        $Property=str_replace('[', '', $Property); 
+
+        $aptname=Apartment::where('tid',$workorders->tenant_id)->lists('apt_name');
+        $aptname=str_replace('"', '', $aptname);    
+        $aptname=str_replace(']', '', $aptname);  
+
+        $aptname=str_replace('[', '', $aptname);    
+   
+
+        return view ('workorders.show',compact('workorders','tenant_name','aptname'));
+    
+
+}
+        else
+        {
+           return view('welcome'); 
+        }
+
+
+
     }
     /**
      * Show the form for editing the specified resource.
@@ -143,6 +180,12 @@ public function store(Request $request)
      */
     public function edit($id)
     {
+       
+
+ if(Auth::check())
+        {
+
+
         $users = User::whereIn('id',function ($b){
         $b->select('user_id')->from('role_user')->whereIn('role_id',function ($c){
          $c->select('id')->from('roles')->where('name','tenant');
@@ -151,7 +194,19 @@ public function store(Request $request)
 
         $workorder=Workorder::find($id);
         return view('workorders.edit',compact('workorder','users'));
+    
+ }
+        else
+        {
+           return view('welcome'); 
+        }
+
+
+
     }
+
+
+
     /**
      * Update the specified resource in storage.
      *

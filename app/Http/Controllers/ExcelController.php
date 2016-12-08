@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 //Excel 
-
+use App\ContactUS;
+use App\userrequests;
 use Input;
 use App\Workorder;
+use App\Apartment;
 use DB;
 use Excel;
 
@@ -28,6 +30,37 @@ class ExcelController extends Controller
 		})->download($type);
 	}
 	
+	public function importx()
+	{
+		return view('import2');
+	}
+public function importcus()
+	{
+		return view('import3');
+	}
+
+	public function aptrpt($type)
+	{
+		$data = Apartment::get()->toArray();
+		return Excel::create('Apt_rpt', function($excel) use ($data) {
+			$excel->sheet('mySheet', function($sheet) use ($data)
+	        {
+				$sheet->fromArray($data);
+	        });
+		})->download($type);
+	}
+
+	public function msgq($type)
+	{
+		$data = contactus::get()->toArray();
+		return Excel::create('contactusrpt', function($excel) use ($data) {
+			$excel->sheet('mySheet', function($sheet) use ($data)
+	        {
+				$sheet->fromArray($data);
+	        });
+		})->download($type);
+	}
+
 	public function importExcel()
 	{
 		if(Input::hasFile('import_file')){

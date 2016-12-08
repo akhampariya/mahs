@@ -34,7 +34,9 @@
                                     <th>Expected Cost</th>
                                     <th>Actual Date</th>
                                     <th>Actual Cost</th>
-                                    <th colspan="3">Actions</th>
+                                    @if (Auth::check())
+                                        @role('admin')<th colspan="3">Actions</th>@endrole
+                                         @endif
                                 </tr>
 
                                 </thead>

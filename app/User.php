@@ -58,6 +58,7 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Workorder');
     }
+   
 
     /**
      * Get a List of roles ids associated with the current user.
