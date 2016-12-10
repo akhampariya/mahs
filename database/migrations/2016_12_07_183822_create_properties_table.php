@@ -19,7 +19,7 @@ class CreatePropertiesTable extends Migration
             $table->integer('tid')->unsigned()->nullable();
             $table->timestamps();   
         });
-
+        
     }
 
     public function down()

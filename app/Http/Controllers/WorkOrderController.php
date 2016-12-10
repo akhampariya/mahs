@@ -147,11 +147,11 @@ public function store(Request $request)
         $tenant_name=str_replace('["', '', $tenant_name);
         $tenant_name=str_replace('"]', '', $tenant_name);
 
-        $Property=Property::where('apt_no',$id)->lists('property_name');
-        $Property=str_replace('"', '', $Property);    
-        $Property=str_replace(']', '', $Property);  
+        // $Property=Property::where('apt_no',$id)->lists('property_name');
+        // $Property=str_replace('"', '', $Property);    
+        // $Property=str_replace(']', '', $Property);  
 
-        $Property=str_replace('[', '', $Property); 
+        // $Property=str_replace('[', '', $Property); 
 
         $aptname=Apartment::where('tid',$workorders->tenant_id)->lists('apt_name');
         $aptname=str_replace('"', '', $aptname);    
