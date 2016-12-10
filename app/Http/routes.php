@@ -80,7 +80,7 @@ Route::get('userrequests', 'ContactUSController@userrequests');
 
 //chat 
 Route::get(
-    '/', ['as' => 'home', function () {
+    '/chat', ['as' => 'home', function () {
         return response()->view('index');
     }]
 );

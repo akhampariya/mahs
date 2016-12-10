@@ -193,7 +193,7 @@ public function store(Request $request)
         })->pluck('name','id');
 
        $workorder = WorkOrder::find($id);
-        $tenant=User::where('id',$workorders->tenant_id)->lists('name');
+        $tenant=User::where('id',$workorder->tenant_id)->lists('name');
         $tenant=str_replace('["', '', $tenant);
         $tenant=str_replace('"]', '', $tenant);
 
