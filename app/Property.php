@@ -9,7 +9,7 @@ class Property extends Model
     protected $fillable=[
         'property_name',
         // 'apt_no',   
-        'adress',
+        'address',
         ];
 
         public function workorder() {
