@@ -27,7 +27,7 @@
                                   <!--   <th>Id</th> -->
                                     <th>Tenant Name</th>
                                     <th>Apartment Name</th>
-                                    <!-- <th>Tenant ID</th> -->
+                                    <th>Apartment No</th>
                                     <th>Apartment Type</th>
                                     <!-- <th>Description</th>
                                     <th>Status</th>
@@ -53,6 +53,7 @@
                                         <!-- <td class="table-text">{{ $user->id}}</td> -->
                                         
                                         <td class="table-text">{{ $apartment->apt_name}}</td>
+                                        <td class="table-text">{{ $apartment->id}}</td>
                                         <td class="table-text">{{ $apartment->apt_typ }}</td>
                                   
                                         @if (Auth::check())

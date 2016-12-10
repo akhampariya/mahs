@@ -14,16 +14,15 @@ class CreatePropertiesTable extends Migration
     {
         Schema::create('properties', function(Blueprint $table) {
             $table->increments('id');
-            $table->softDeletes();
-            $table->string('property_name', 20)->default('MAHS Apartments');
-            $table->string('apt_no', 3);
-            $table->string('adress', 30)->default('Dodge Street  68106');
+            $table->string('property_name')->default('MAHS Apartments');
+            $table->string('address')->default('Dodge Street 68106');
+            $table->integer('tid')->unsigned()->nullable();
             $table->timestamps();   
         });
 
-        Schema::table('properties', function (Blueprint $table) {
-           $table->foreign('apt_no')->references('id')->on('workorders');
-       });
+       //  Schema::table('properties', function (Blueprint $table) {
+       //     $table->foreign('apt_no')->references('id')->on('workorders');
+       // // });
     }
 
     public function down()

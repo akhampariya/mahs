@@ -9,6 +9,7 @@ use App\userrequests;
 use Input;
 use App\Workorder;
 use App\Apartment;
+use App\Property;
 use DB;
 use Excel;
 
@@ -34,9 +35,13 @@ class ExcelController extends Controller
 	{
 		return view('import2');
 	}
-public function importcus()
+	public function importcus()
 	{
 		return view('import3');
+	}
+	public function importp()
+	{
+		return view('importp');
 	}
 
 	public function aptrpt($type)
@@ -54,6 +59,16 @@ public function importcus()
 	{
 		$data = contactus::get()->toArray();
 		return Excel::create('contactusrpt', function($excel) use ($data) {
+			$excel->sheet('mySheet', function($sheet) use ($data)
+	        {
+				$sheet->fromArray($data);
+	        });
+		})->download($type);
+	}
+	public function importprop($type)
+	{
+		$data = Property::get()->toArray();
+		return Excel::create('PropertyList', function($excel) use ($data) {
 			$excel->sheet('mySheet', function($sheet) use ($data)
 	        {
 				$sheet->fromArray($data);

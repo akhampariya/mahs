@@ -16,6 +16,8 @@ class CreateApartmentsTable extends Migration
             $table->increments('id');
             $table->string('apt_name');
             $table->string('apt_typ');
+			$table->integer('tid')->unsigned()->nullable();
+            $table->integer('pid')->unsigned()->nullable();
             $table->timestamps();
         });
     }

@@ -192,8 +192,12 @@ public function store(Request $request)
         });        
         })->pluck('name','id');
 
-        $workorder=Workorder::find($id);
-        return view('workorders.edit',compact('workorder','users'));
+       $workorders = WorkOrder::find($id);
+        $tenant=User::where('id',$workorders->tenant_id)->lists('name');
+        $tenant=str_replace('["', '', $tenant);
+        $tenant=str_replace('"]', '', $tenant);
+
+        return view('workorders.edit',compact('workorder','users',' tenant'));
     
  }
         else

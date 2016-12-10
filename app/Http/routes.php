@@ -65,9 +65,12 @@ Route::get('laravel-version', function()
 Route::get('import', 'ExcelController@import');
 Route::get('importx', 'ExcelController@importx');
 Route::get('importcus', 'ExcelController@importcus');
+Route::get('importp', 'ExcelController@importp');
+
 Route::get('downloadExcel/{type}', 'ExcelController@downloadExcel');
 Route::get('aptrpt/{type}', 'ExcelController@aptrpt');
 Route::get('msgq/{type}', 'ExcelController@msgq');
+Route::get('importprop/{type}', 'ExcelController@importprop');
 Route::post('importExcel', 'ExcelController@importExcel');
 // 
 Route::get('contact-us', 'ContactUSController@contactUS');

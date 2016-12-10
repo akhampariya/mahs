@@ -12,41 +12,23 @@
                              <table class="table table-bordered table-striped cds-datatable">
                                 <thead> <!-- Table Headings -->
                                 <tr class="bg-info">
-                                <th><h4>Update Workorder Details</h4>
+                                <th><h4>Update Property Details</h4>
         </th>
                                 </tr></thead></table>
-            {!! Form::model($workorder,['method' => 'PATCH','route'=>['workorders.update',$workorder->id]]) !!}
+            {!! Form::model($Property,['method' => 'PATCH','route'=>['Property.update',$Property->id]]) !!}
 
-        <div class="form-group">
-            {!! Form::select('tenant_id', $users) !!}            
-        </div>
+
         
         <div class="form-group">
-        {!! Form::label('desc', 'Workorder Desc:') !!}
-        {!! Form::text('desc',null,['class'=>'form-control']) !!}
+        {!! Form::label('property_name', 'Property Name:') !!}
+        {!! Form::text('property_name',null,['class'=>'form-control']) !!}
+       
         </div>
         <div class="form-group">
-            {!! Form::label('status', 'Workorder status:') !!}
-            {!! Form::text('status',null,['class'=>'form-control']) !!}
+            {!! Form::label('address','Address:') !!}
+            {!! Form::text('address',null,['class'=>'form-control']) !!}
         </div>
-        <div class="form-group">
-            {!! Form::label('expecteddate', 'Workorder expecteddate:') !!}
-            {!! Form::text('expecteddate',null,['class'=>'form-control']) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::label('estmtdcost', 'Workorder estmtdcost:') !!}
-            {!! Form::text('estmtdcost',null,['class'=>'form-control']) !!}
-        </div>
-
-        <div class="form-group">
-            {!! Form::label('actualdate', 'Workorder actualdate:') !!}
-            {!! Form::text('actualdate',null,['class'=>'form-control']) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::label('actualcost', 'Workorder actualcost:') !!}
-            {!! Form::text('actualcost',null,['class'=>'form-control']) !!}
-        </div>
-
+       
             <div class="form-group">
             {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
         </div></div></div></div></div></div>

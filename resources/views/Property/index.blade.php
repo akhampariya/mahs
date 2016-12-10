@@ -27,9 +27,12 @@
                                   <!--   <th>Id</th> -->
                                     <th>Property Name</th>
                                     <!-- <th>Tenant ID</th> -->
-                                    <th>Apartment Number</th>
+                                <!--     <th>Apartment Number</th> -->
                                     <th>Address</th>
-                                    <th colspan="3">Actions</th>
+                                      @if (Auth::check())
+                                        @role('admin')<th colspan="3">Actions</th>@endrole
+                                         @endif
+                                </tr>
                                 </tr>
 
                                 </thead>
@@ -41,8 +44,8 @@
 
                                        <td class="table-text">{{ $Property->property_name}}</td>
                                      <!--    <td class="table-text">{{ $Property->tenant_id}}</td> -->
-                                        <td class="table-text"><a href="{{url('Property',$Property->id)}}">{{ $Property->apt_no }}</a></td>
-                                        <td class="table-text">{{ $Property->adress }}</td>
+                                      <!--   <td class="table-text"><a href="{{url('Property',$Property->id)}}">{{ $Property->apt_no }}</a></td> -->
+                                        <td class="table-text">{{ $Property->address }}</td>
                                        @if (Auth::check())
                                         @role('admin')
                                         <td class="table-text"><a href="{{route('Property.edit',$Property->id)}}">Update</a></td> 
@@ -65,7 +68,7 @@
                     
                                 @if (Auth::check())
                                     @role('admin')
-                                        @include('import')
+                                    @include('importp')
                     
                                     @endrole
                                 @endif

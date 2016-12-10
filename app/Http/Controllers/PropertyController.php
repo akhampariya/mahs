@@ -88,8 +88,8 @@ public function store(Request $request)
     {
         $this->validate($request,[
         'property_name'=>'required',
-        'apt_no'=>'required',
-        'adress'=>'required',
+        // 'apt_no'=>'required',
+        'address'=>'required',
         ]);
 
         $aptno=$request['apt_no'];

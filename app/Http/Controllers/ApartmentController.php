@@ -79,18 +79,27 @@ class ApartmentController extends Controller
 	
 	public function store(Request $request)
     {
+        
+        $this->validate($request,[
+       
+        'apt_typ' => 'required',
+       
+        ]);
+
+
         $tid = Input::get('tenant_id');
         $pid = Input::get('id');
         
         // $workorders = WorkOrder::find($tid);
         
-        // $tname=User::where('id',$tid)->lists('name');
-        // $tname=str_replace('["', '', $tname);
-        // $tname=str_replace('"]', '', $tname);
-        // rx2 end 
-
+        $pname=Property::where('id',$pid)->lists('property_name');
+        $pname=str_replace('["', '', $pname);
+        $pname=str_replace('"]', '', $pname);
+        
         $request['tid']=$tid;
         $request['pid']=$pid;
+        $request['apt_name']=$pname;
+
         
         $apartment = new apartment($request->all());
         $apartment->save();
@@ -129,7 +138,19 @@ class ApartmentController extends Controller
      */
     public function edit($id)
     {
-    	
+        // // 
+        // $this->validate($request,['apt_typ' => 'required']);
+
+        $users = User::whereIn('id',function ($b){
+        $b->select('user_id')->from('role_user')->whereIn('role_id',function ($c){
+         $c->select('id')->from('roles')->where('name','tenant');
+        });        
+        })->pluck('name','id');
+
+
+        $props = Property::all()->pluck('property_name','id');
+       
+             
         $apartment = Apartment::find($id);
         
 		$tenant_name=User::where('id',$apartment->tid)->lists('name');
@@ -137,7 +158,7 @@ class ApartmentController extends Controller
         $tenant_name=str_replace('"]', '', $tenant_name);
 
 
-        return view('apartments.edit',compact('apartment','tenant_name'));
+        return view('apartments.edit',compact('apartment','tenant_name','users','props'));
     
     }
     /**
@@ -148,7 +169,26 @@ class ApartmentController extends Controller
      */
     public function update($id,Request $request)
     {
-        //
+       
+        $this->validate($request,[
+       
+        'apt_typ' => 'required',
+       
+        ]);
+        
+        $tid = Input::get('tenant_id');
+        $pid = Input::get('id');
+        
+        // $workorders = WorkOrder::find($tid);
+        
+        $pname=Property::where('id',$pid)->lists('property_name');
+        $pname=str_replace('["', '', $pname);
+        $pname=str_replace('"]', '', $pname);
+        
+        $request['tid']=$tid;
+        $request['pid']=$pid;
+        $request['apt_name']=$pname;
+
         $apartment=new Apartment($request->all());            
         $apartment=Apartment::find($id);
         $apartment->update($request->all());
