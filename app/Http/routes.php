@@ -76,3 +76,16 @@ Route::post('importExcel', 'ExcelController@importExcel');
 Route::get('contact-us', 'ContactUSController@contactUS');
 Route::post('contact-us', ['as'=>'contactus.store','uses'=>'ContactUSController@contactUSPost']);
 Route::get('userrequests', 'ContactUSController@userrequests');
+
+
+//chat 
+Route::get(
+    '/', ['as' => 'home', function () {
+        return response()->view('index');
+    }]
+);
+
+Route::post(
+    '/token',
+    ['uses' => 'TokenController@generate', 'as' => 'token-generate']
+);
