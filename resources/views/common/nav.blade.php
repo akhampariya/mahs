@@ -54,14 +54,19 @@
                         {{--<li><a href="{{ url('/files') }}"><i class="fa fa-btn fa-fw fa-file"></i>Files</a></li>--}}
                     </ul>
                 </li>
-                <li><a href="{{ action('ContactUSController@userrequests') }}">User Msgs</a></li>
+                 <li><a href="{{ action('ContactUSController@userrequests') }}">User Msgs</a></li>
                 {{-- work order link to the work ordrer page--}}
                 @endrole
+                
                 <li><a href="{{ action('ApartmentController@index') }}">Apartments Info</a></li>
                 <li><a href="{{ action('WorkOrderController@index') }}">Work Order</a></li>
                 <li><a href="{{ action('PropertyController@index') }}">Property Info</a></li>
-                 
-				 
+                @if (Auth::check())
+                
+                @role('tenant')
+                <li><a href="{{ url('/contact-us') }}">Contact Us</a></li>
+                @endrole
+			     @endif	 
             </ul>
             
             @endif

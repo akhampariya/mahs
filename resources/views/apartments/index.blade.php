@@ -79,8 +79,7 @@
                                 @if (Auth::check())
                                     @role('admin')
                                         @include('import2')
-                    
-                                    @endrole
+                                         @endrole
                                 @endif
 
                             </form>

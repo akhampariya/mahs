@@ -12,6 +12,7 @@ class CreateWorkordersTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('workorders');
         Schema::create('workorders', function (Blueprint $table) 
         {
             $table->increments('id');
@@ -25,12 +26,11 @@ class CreateWorkordersTable extends Migration
 			$table->integer('actualcost');
             $table->integer('tenant_id');
             $table->timestamps();				
-        });
-
-        Schema::table('workorders', function (Blueprint $table) {
+      
            $table->foreign('tenant_id')->references('id')->on('users');
-           $table->foreign('tenant_id')->references('id')->on('apartments');
-           $table->foreign('tenant_id')->references('id')->on('properties');
+           // $table->foreign('tenant_id')->references('id')->on('apartments');
+           // $table->foreign('tenant_id')->references('id')->on('properties');
+
        });
 
     }

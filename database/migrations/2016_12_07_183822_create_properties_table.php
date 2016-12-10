@@ -20,9 +20,6 @@ class CreatePropertiesTable extends Migration
             $table->timestamps();   
         });
 
-       //  Schema::table('properties', function (Blueprint $table) {
-       //     $table->foreign('apt_no')->references('id')->on('workorders');
-       // // });
     }
 
     public function down()
